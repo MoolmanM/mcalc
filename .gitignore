@@ -1,0 +1,9 @@
+# Ignore everything
+*
+
+# But do not ignore TypeScript files
+!*.ts
+
+# Also do not ignore .gitignore itself (optional)
+!.gitignore
+
