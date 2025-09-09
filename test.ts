@@ -2,9 +2,19 @@ function sumNumbers(numbers: number[]): number {
   return numbers.reduce((a, b) => a + b, 0);
 }
 
-function calcAction(numbers: string[], options: { sum?: boolean }) {
+function calcAction(numbers: string[]) {
   let total = 0;
   for (let i = 0; i < numbers.length; i++) {
+    // This will obviously not work, just testing something
+    if (numbers[i] === "*") {
+      const left = Number(numbers[i - 1]);
+      if (total == 0) {
+        total = left
+      }
+      const right = Number(numbers[i + 1]);
+      total *= right;
+      continue;
+    }
     if (numbers[i] === "+") {
       const left = Number(numbers[i - 1]);
       if (total == 0) {
@@ -13,7 +23,7 @@ function calcAction(numbers: string[], options: { sum?: boolean }) {
       const right = Number(numbers[i + 1]);
       total += right;
     }
-    else if (numbers[i] === "-") {
+    if (numbers[i] === "-") {
       const left = Number(numbers[i - 1]);
       if (total == 0) {
         total = left
