@@ -1,5 +1,4 @@
 function linearSearch(arr: string[], target: string): number[] {
-  // Can probably just check for every single symbol.
   const outputArr: number[] = [];
   for (let i = 0; i < arr.length; i++) {
     if (arr[i] === target) {
@@ -28,9 +27,10 @@ function calcAction(numbers: string[]) {
     for (let i = 0; i < multiplicationIndex.length; i++) {
       const left = Number(numbers[multiplicationIndex[i] - 1]);
       const right = Number(numbers[multiplicationIndex[i] + 1]);
-      console.log(left, right);
-      total = left * right
-      console.log(total)
+      total = left * right;
+      numbers[multiplicationIndex[i] - 1] = total.toString();
+      numbers.splice(multiplicationIndex[i], 2)
+      console.log(numbers);
     }
   }
   if (divisionIndex.length > 0) {
