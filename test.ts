@@ -1,6 +1,3 @@
-function sumNumbers(numbers: number[]): number {
-  return numbers.reduce((a, b) => a + b, 0);
-}
 function linearSearch(arr: string[], target: string): number[] {
   const outputArr: number[] = [];
   for (let i = 0; i < arr.length; i++) {
