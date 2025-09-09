@@ -1,20 +1,19 @@
 function sumNumbers(numbers: number[]): number {
   return numbers.reduce((a, b) => a + b, 0);
 }
+function linearSearch(arr: string[], target: string): number[] {
+  const outputArr: number[] = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === target) {
+      outputArr.push(i)
+    }
+  }
+  return outputArr
+}
 
 function calcAction(numbers: string[]) {
   let total = 0;
   for (let i = 0; i < numbers.length; i++) {
-    // This will obviously not work, just testing something
-    if (numbers[i] === "*") {
-      const left = Number(numbers[i - 1]);
-      if (total == 0) {
-        total = left
-      }
-      const right = Number(numbers[i + 1]);
-      total *= right;
-      continue;
-    }
     if (numbers[i] === "+") {
       const left = Number(numbers[i - 1]);
       if (total == 0) {
@@ -32,6 +31,7 @@ function calcAction(numbers: string[]) {
       total -= right;
     }
   }
+  console.log(linearSearch(numbers, "+"))
   console.log(total)
 }
 import { Command } from "commander";
