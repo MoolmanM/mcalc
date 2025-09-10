@@ -1,6 +1,4 @@
-export function calc(inputArr: string[]): number {
-  let i = 0;
-  // division
+function division(i: number, inputArr: string[]): void {
   while ((i = inputArr.indexOf("/")) !== -1) {
     const left = Number(inputArr[i - 1]);
     const right = Number(inputArr[i + 1]);
@@ -8,6 +6,10 @@ export function calc(inputArr: string[]): number {
     inputArr[i - 1] = total.toString();
     inputArr.splice(i, 2);
   }
+}
+export function calc(inputArr: string[]): number {
+  let i = 0;
+  division(i, inputArr);
   // multiplication
   while ((i = inputArr.indexOf("*")) !== -1) {
     const left = Number(inputArr[i - 1]);
