@@ -103,4 +103,9 @@ describe("Calculator", () => {
   test("powers", () => {
     expect(calc(["3", "^", "2"])).toBe(9);
   });
+
+  test("roots", () => {
+    expect(calc(["9", "!", "2"])).toBe(3);
+    expect(calc(["27", "!", "3"])).toBe(3);
+  });
 })
