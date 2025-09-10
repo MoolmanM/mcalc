@@ -99,4 +99,8 @@ describe("Calculator", () => {
   test("mixed operators", () => {
     expect(calc(["3", "+", "4", "*", "2", "/", "(", "1", "-", "5", ")"])).toBe(1);
   });
+
+  test("powers", () => {
+    expect(calc(["3", "^", "2"])).toBe(9);
+  });
 })
