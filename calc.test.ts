@@ -31,4 +31,7 @@ describe("Calculator", () => {
     expect(calc(["2", "+", "3", "*", "4"])).toBe(14);
   });
 
+  test("parentheses override precedence", () => {
+    expect(calc(["(", "2", "+", "3", ")", "*", "4"])).toBe(20);
+  });
 })

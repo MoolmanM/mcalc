@@ -13,6 +13,20 @@ function applyOperator(
   }
 }
 export function calc(inputArr: string[]): number {
+  let i;
+  while ((i = inputArr.lastIndexOf("(")) !== -1) {
+    let closeIndex = inputArr.indexOf(")", i);
+    const subArr = inputArr.slice(i + 1, closeIndex);
+    applyOperator(subArr, "/", (a, b) => a / b);
+    applyOperator(subArr, "*", (a, b) => a * b);
+    applyOperator(subArr, "+", (a, b) => a + b);
+    applyOperator(subArr, "-", (a, b) => a - b);
+    inputArr[i] = subArr[0]
+    inputArr.splice(i + 1, closeIndex - i)
+    console.log(subArr)
+  }
+  console.log(inputArr)
+
   applyOperator(inputArr, "/", (a, b) => a / b);
   applyOperator(inputArr, "*", (a, b) => a * b);
   applyOperator(inputArr, "+", (a, b) => a + b);
