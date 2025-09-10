@@ -75,10 +75,6 @@ describe("Calculator", () => {
     expect(calc(["50", "/", "50"])).toBe(1);
   });
 
-  test("division inverse", () => {
-    expect(calc(["50", "/", "50"])).toBe(1);
-  });
-
   // associativity and distributivity
   test("left associativity subtraction", () => {
     expect(calc(["10", "-", "3", "-", "2"])).toBe(5);
