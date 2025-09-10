@@ -1,10 +1,18 @@
 export function calc(inputArr: string[]): number {
   let i = 0;
+  // addition
   while ((i = inputArr.indexOf("+")) !== -1) {
-    console.log(inputArr)
     const left = Number(inputArr[i - 1]);
     const right = Number(inputArr[i + 1]);
     const total = left + right;
+    inputArr[i - 1] = total.toString();
+    inputArr.splice(i, 2);
+  }
+  // subtraction
+  while ((i = inputArr.indexOf("-")) !== -1) {
+    const left = Number(inputArr[i - 1]);
+    const right = Number(inputArr[i + 1]);
+    const total = left - right;
     inputArr[i - 1] = total.toString();
     inputArr.splice(i, 2);
   }
