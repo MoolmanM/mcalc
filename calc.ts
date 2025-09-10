@@ -25,6 +25,7 @@ export function calc(inputArr: string[]): number {
     const subArr = inputArr.slice(i + 1, closeIndex);
     console.log("input", inputArr)
     console.log("sub", subArr)
+    applyOperator(subArr, "^", (a, b) => a ** b);
     applyOperator(subArr, "/", (a, b) => a / b);
     applyOperator(subArr, "*", (a, b) => a * b);
     applyOperator(subArr, "+", (a, b) => a + b);
@@ -35,6 +36,7 @@ export function calc(inputArr: string[]): number {
     console.log("2", inputArr)
   }
 
+  applyOperator(inputArr, "^", (a, b) => a ** b);
   applyOperator(inputArr, "/", (a, b) => a / b);
   applyOperator(inputArr, "*", (a, b) => a * b);
   applyOperator(inputArr, "+", (a, b) => a + b);
