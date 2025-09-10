@@ -1,5 +1,13 @@
 export function calc(inputArr: string[]): number {
   let i = 0;
+  // multiplication
+  while ((i = inputArr.indexOf("*")) !== -1) {
+    const left = Number(inputArr[i - 1]);
+    const right = Number(inputArr[i + 1]);
+    const total = left * right;
+    inputArr[i - 1] = total.toString();
+    inputArr.splice(i, 2);
+  }
   // addition
   while ((i = inputArr.indexOf("+")) !== -1) {
     const left = Number(inputArr[i - 1]);
