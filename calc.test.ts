@@ -25,4 +25,10 @@ describe("Calculator", () => {
     expect(calc(["100", "/", "200"])).toBe(0.5);
     expect(calc(["100", "/", "200", "/", "5"])).toBe(0.1);
   });
+
+  // operator precedence
+  test("multiplicaiton before addition", () => {
+    expect(calc(["2", "+", "3", "*", "4"])).toBe(14);
+  });
+
 })
