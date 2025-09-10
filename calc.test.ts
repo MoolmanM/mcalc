@@ -34,4 +34,13 @@ describe("Calculator", () => {
   test("parentheses override precedence", () => {
     expect(calc(["(", "2", "+", "3", ")", "*", "4"])).toBe(20);
   });
+
+  // parentheses
+  test("parentheses adds invisible multiplication", () => {
+    expect(calc(["(", "2", "+", "3", "(", "5", "-", "1", ")", "+", "2", ")", "*", "4"])).toBe(64);
+  });
+
+  test("nested parentheses", () => {
+    expect(calc(["(", "2", "+", "3", "*", "(", "5", "-", "1", ")", "+", "2", ")", "*", "4"])).toBe(64);
+  });
 })
