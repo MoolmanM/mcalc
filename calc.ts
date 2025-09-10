@@ -14,7 +14,7 @@ function applyOperator(
 }
 export function calc(inputArr: string[]): number {
   let i;
-  const operand = ["/", "*", "+", "-"]
+  const operand = ["/", "*", "+", "-", "^"]
   while ((i = inputArr.lastIndexOf("(")) !== -1) {
     if (!operand.includes(inputArr[i - 1]) && (inputArr[i - 1] !== undefined)) {
       console.log(typeof (inputArr[i - 1]), inputArr[i - 1])
@@ -25,6 +25,7 @@ export function calc(inputArr: string[]): number {
     const subArr = inputArr.slice(i + 1, closeIndex);
     console.log("input", inputArr)
     console.log("sub", subArr)
+    applyOperator(subArr, "!", (a, b) => a ** (1 / b));
     applyOperator(subArr, "^", (a, b) => a ** b);
     applyOperator(subArr, "/", (a, b) => a / b);
     applyOperator(subArr, "*", (a, b) => a * b);
@@ -36,6 +37,7 @@ export function calc(inputArr: string[]): number {
     console.log("2", inputArr)
   }
 
+  applyOperator(inputArr, "!", (a, b) => a ** (1 / b));
   applyOperator(inputArr, "^", (a, b) => a ** b);
   applyOperator(inputArr, "/", (a, b) => a / b);
   applyOperator(inputArr, "*", (a, b) => a * b);
