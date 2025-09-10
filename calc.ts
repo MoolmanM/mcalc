@@ -8,14 +8,14 @@ function linearSearch(arr: string[], target: string): number[] {
   return outputArr
 }
 
-function calcAction(numbers: string[]) {
+export function calc(inputArr: string[]): number {
   let total = 0;
-  const parenthesesIndex = linearSearch(numbers, "(");
-  const exponenetsIndex = linearSearch(numbers, "*");
-  const multiplicationIndex = linearSearch(numbers, "*");
-  const divisionIndex = linearSearch(numbers, "/");
-  const additionIndex = linearSearch(numbers, "+");
-  const subtractionIndex = linearSearch(numbers, "-");
+  const parenthesesIndex = linearSearch(inputArr, "(");
+  const exponenetsIndex = linearSearch(inputArr, "*");
+  const multiplicationIndex = linearSearch(inputArr, "*");
+  const divisionIndex = linearSearch(inputArr, "/");
+  const additionIndex = linearSearch(inputArr, "+");
+  const subtractionIndex = linearSearch(inputArr, "-");
 
   if (parenthesesIndex.length > 0) {
 
@@ -25,23 +25,30 @@ function calcAction(numbers: string[]) {
   }
   if (multiplicationIndex.length > 0) {
     for (let i = 0; i < multiplicationIndex.length; i++) {
-      const left = Number(numbers[multiplicationIndex[i] - 1]);
-      const right = Number(numbers[multiplicationIndex[i] + 1]);
+      const left = Number(inputArr[multiplicationIndex[i] - 1]);
+      const right = Number(inputArr[multiplicationIndex[i] + 1]);
       total = left * right;
-      numbers[multiplicationIndex[i] - 1] = total.toString();
-      numbers.splice(multiplicationIndex[i], 2)
-      console.log(numbers);
+      inputArr[multiplicationIndex[i] - 1] = total.toString();
+      inputArr.splice(multiplicationIndex[i], 2)
     }
   }
   if (divisionIndex.length > 0) {
 
   }
   if (additionIndex.length > 0) {
+    for (let i = 0; i < additionIndex.length; i++) {
+      const left = Number(inputArr[additionIndex[i] - 1]);
+      const right = Number(inputArr[additionIndex[i] + 1]);
+      total = left + right;
+      inputArr[additionIndex[i] - 1] = total.toString();
+      inputArr.splice(additionIndex[i], 2)
+    }
 
   }
   if (subtractionIndex.length > 0) {
 
   }
+  return Number(inputArr[0])
 }
 import { Command } from "commander";
 
@@ -50,6 +57,9 @@ const program = new Command();
 program.command('calc')
   .description('Calculate given numbers')
   .argument('<numbers...>', 'numbers to calc')
-  .action(calcAction);
+  .action((numbers: string[]) => {
+    const result = calc(numbers);
+    console.log(result)
+  });
 
 program.parse();
