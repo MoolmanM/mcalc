@@ -1,39 +1,22 @@
-function division(i: number, inputArr: string[]): void {
-  while ((i = inputArr.indexOf("/")) !== -1) {
+function applyOperator(
+  inputArr: string[],
+  operator: string,
+  fn: (a: number, b: number) => number
+): void {
+  let i: number;
+  while ((i = inputArr.indexOf(operator)) !== -1) {
     const left = Number(inputArr[i - 1]);
     const right = Number(inputArr[i + 1]);
-    const total = left / right;
+    const total = fn(left, right);
     inputArr[i - 1] = total.toString();
     inputArr.splice(i, 2);
   }
 }
 export function calc(inputArr: string[]): number {
-  let i = 0;
-  division(i, inputArr);
-  // multiplication
-  while ((i = inputArr.indexOf("*")) !== -1) {
-    const left = Number(inputArr[i - 1]);
-    const right = Number(inputArr[i + 1]);
-    const total = left * right;
-    inputArr[i - 1] = total.toString();
-    inputArr.splice(i, 2);
-  }
-  // addition
-  while ((i = inputArr.indexOf("+")) !== -1) {
-    const left = Number(inputArr[i - 1]);
-    const right = Number(inputArr[i + 1]);
-    const total = left + right;
-    inputArr[i - 1] = total.toString();
-    inputArr.splice(i, 2);
-  }
-  // subtraction
-  while ((i = inputArr.indexOf("-")) !== -1) {
-    const left = Number(inputArr[i - 1]);
-    const right = Number(inputArr[i + 1]);
-    const total = left - right;
-    inputArr[i - 1] = total.toString();
-    inputArr.splice(i, 2);
-  }
+  applyOperator(inputArr, "/", (a, b) => a / b);
+  applyOperator(inputArr, "*", (a, b) => a * b);
+  applyOperator(inputArr, "+", (a, b) => a + b);
+  applyOperator(inputArr, "-", (a, b) => a - b);
   return Number(inputArr[0])
 }
 import { Command } from "commander";
